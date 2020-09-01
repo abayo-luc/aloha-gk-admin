@@ -8,6 +8,7 @@ import {
   Filter,
   SearchInput,
   DateInput,
+  NumberField,
   //   SegmentInput,
 } from "react-admin";
 import ProductCategory from "./components/ProductCategory";
@@ -29,9 +30,12 @@ export default (props) => (
     <Datagrid>
       <TextField source="name" />
       <TextField source="description" />
-      <TextField source="price" />
-      <DateField source="createdAt" />
-      <ProductCategory />
+      <NumberField
+        source="price"
+        options={{ style: "currency", currency: "Rwf" }}
+      />
+      <DateField source="createdAt" label="Date" />
+      <ProductCategory label="Category" />
       {/* <TextField source="views" /> */}
       <EditButton basePath="/products" />
     </Datagrid>
