@@ -6,11 +6,10 @@ import ProductList from "./resources/products/ProductList";
 import ProductEdit from "./resources/products/ProductEdit";
 import CategoryList from "./resources/categories/CategoryList";
 import UserList from "./resources/users/UserList";
+const { REACT_APP_API_BASE_URL } = process.env;
 export default () => {
   return (
-    <Admin
-      dataProvider={simpleRestProvider("http://localhost:8080/api/v1/admin")}
-    >
+    <Admin dataProvider={simpleRestProvider(REACT_APP_API_BASE_URL)}>
       <Resource
         name="products"
         list={ProductList}
