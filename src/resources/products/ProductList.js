@@ -8,9 +8,10 @@ import {
   Filter,
   SearchInput,
   DateInput,
-  //   SegmentInput,
+  NumberField,
+  RichTextField,
 } from "react-admin";
-import ProductCategory from "./components/ProductCategory";
+import ListActions from "./components/ListActions";
 
 const ProductFilter = (props) => (
   <Filter {...props}>
@@ -19,21 +20,28 @@ const ProductFilter = (props) => (
   </Filter>
 );
 
-export default (props) => (
-  <List
-    filters={<ProductFilter />}
-    sort={{ field: "createdAt", order: "DESC" }}
-    perPage={25}
-    {...props}
-  >
-    <Datagrid>
-      <TextField source="name" />
-      <TextField source="description" />
-      <TextField source="price" />
-      <DateField source="createdAt" />
-      <ProductCategory />
-      {/* <TextField source="views" /> */}
-      <EditButton basePath="/products" />
-    </Datagrid>
-  </List>
-);
+export default (props) => {
+  console.log(props);
+  return (
+    <List
+      filters={<ProductFilter />}
+      actions={<ListActions />}
+      sort={{ field: "createdAt", order: "DESC" }}
+      perPage={25}
+      {...props}
+    >
+      <Datagrid>
+        <TextField source="name" />
+        <RichTextField source="description" />
+        <NumberField
+          source="price"
+          options={{ style: "currency", currency: "Rwf" }}
+        />
+        <DateField source="createdAt" label="Date" />
+        <TextField source="category.name" label="Category" />
+        {/* <TextField source="views" /> */}
+        <EditButton basePath="/products" />
+      </Datagrid>
+    </List>
+  );
+};
