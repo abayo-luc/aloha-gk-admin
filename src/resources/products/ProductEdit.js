@@ -8,13 +8,16 @@ import {
   required,
   ReferenceInput,
   SelectInput,
-  ReferenceManyField,
   ArrayInput,
   SimpleFormIterator,
+  ImageInput,
+  ImageField,
 } from "react-admin";
 import { InputAdornment } from "@material-ui/core";
 import RichTextInput from "ra-input-rich-text";
 import { makeStyles } from "@material-ui/core/styles";
+import ImagePreview from "./components/ImagePreview";
+import DeleteButton from "../../components/Buttons/DeleteButton";
 
 const ProductTitle = ({ record }) => {
   return <span> {record ? `${record.name}` : ""}</span>;
@@ -41,22 +44,37 @@ export default (props) => {
     <Edit title={<ProductTitle />} {...props}>
       <TabbedForm>
         <FormTab label="Images" contentClassName={classes.tab}>
-          <ReferenceManyField
-            reference="images"
-            target="productId"
-            addLabel={false}
-            fullWidth
+          <ImageInput
+            source="files"
+            label="Product Images"
+            accept="image/*"
+            placeholder={<p>Drop your file here</p>}
+            multiple
           >
-            <ArrayInput source="images">
-              <SimpleFormIterator>
-                <TextInput source="url" label="Image Url" fullWidth />
-              </SimpleFormIterator>
-            </ArrayInput>
-          </ReferenceManyField>
+            <ImageField source="src" title="title" />
+          </ImageInput>
+
+          <ArrayInput source="images" label="Product Images">
+            <SimpleFormIterator disableAdd removeButton={<DeleteButton />}>
+              <ImagePreview />
+              <TextInput
+                source="url"
+                label="Image Url"
+                fullWidth
+                disabled
+                variant="outlined"
+              />
+            </SimpleFormIterator>
+          </ArrayInput>
         </FormTab>
 
         <FormTab label="Product Details" contentClassName={classes.tab}>
-          <TextInput source="name" fullWidth validate={requiredValidate} />
+          <TextInput
+            source="name"
+            fullWidth
+            validate={requiredValidate}
+            variant="outlined"
+          />
           <NumberInput
             source="price"
             className={classes.price}
@@ -67,11 +85,13 @@ export default (props) => {
             }}
             validate={requiredValidate}
             fullWidth
+            variant="outlined"
           />
           <ReferenceInput
             source="categoryId"
             reference="categories"
             validate={requiredValidate}
+            variant="outlined"
           >
             <SelectInput source="name" />
           </ReferenceInput>
@@ -79,18 +99,34 @@ export default (props) => {
             source="totalItems"
             label="Available Items"
             validate={requiredValidate}
+            variant="outlined"
           />
-          <NumberInput source="discountRate" label="Discrount Rate" />
+          <NumberInput
+            source="discountRate"
+            label="Discrount Rate"
+            variant="outlined"
+          />
         </FormTab>
         <FormTab
           label="Description"
           path="description"
           contentClassName={classes.tab}
         >
+          <TextInput
+            source="summary"
+            label="Product Summary"
+            validate={requiredValidate}
+            variant="outlined"
+            fullWidth
+            multiline
+            rows={3}
+          />
           <RichTextInput
             source="description"
-            label=""
+            label="Product Description"
+            variant="outlined"
             validate={requiredValidate}
+            rows={7}
           />
         </FormTab>
       </TabbedForm>

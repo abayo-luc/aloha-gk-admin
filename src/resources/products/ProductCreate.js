@@ -13,6 +13,8 @@ import {
   ArrayInput,
   SimpleFormIterator,
   DateInput,
+  ImageField,
+  ImageInput,
 } from "react-admin";
 import { InputAdornment } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -31,15 +33,20 @@ const requiredValidate = [required()];
 
 export default (props) => {
   const classes = useStyles();
+  console.log(props);
   return (
     <Create {...props}>
       <TabbedForm>
         <FormTab label="Images">
-          <ArrayInput source="images">
-            <SimpleFormIterator>
-              <TextInput source="url" label="Image Url" fullWidth />
-            </SimpleFormIterator>
-          </ArrayInput>
+          <ImageInput
+            source="files"
+            label="Product Images"
+            accept="image/*"
+            placeholder={<p>Drop your file here</p>}
+            multiple
+          >
+            <ImageField source="src" title="title" />
+          </ImageInput>
         </FormTab>
         <FormTab label="Details">
           <TextInput source="name" fullWidth validate={requiredValidate} />
