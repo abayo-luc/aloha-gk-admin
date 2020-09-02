@@ -9,6 +9,7 @@ import {
   EditButton,
   TextField,
 } from "react-admin";
+import ThumbnailField from "../products/components/ThumbnailField";
 
 const CategoryTitle = ({ record }) => {
   return record ? (
@@ -25,13 +26,12 @@ export default (props) => (
       <ReferenceManyField
         reference="products"
         target="categoryId"
-        // label="resources.categories.fields.products"
+        label="Associated Products"
         perPage={20}
         fullWidth
       >
         <Datagrid>
-          {/* <ThumbnailField /> */}
-          {/* <ProductRefField source="reference" /> */}
+          <ThumbnailField />
           <TextField source="name" />
           <TextField source="description" />
           <NumberField

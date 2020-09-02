@@ -9,9 +9,8 @@ import {
   SearchInput,
   DateInput,
   NumberField,
-  //   SegmentInput,
 } from "react-admin";
-import ProductCategory from "./components/ProductCategory";
+import ListActions from "./components/ListActions";
 
 const ProductFilter = (props) => (
   <Filter {...props}>
@@ -23,6 +22,7 @@ const ProductFilter = (props) => (
 export default (props) => (
   <List
     filters={<ProductFilter />}
+    actions={<ListActions />}
     sort={{ field: "createdAt", order: "DESC" }}
     perPage={25}
     {...props}
@@ -35,7 +35,7 @@ export default (props) => (
         options={{ style: "currency", currency: "Rwf" }}
       />
       <DateField source="createdAt" label="Date" />
-      <ProductCategory label="Category" />
+      <TextField source="category.name" label="Category" />
       {/* <TextField source="views" /> */}
       <EditButton basePath="/products" />
     </Datagrid>

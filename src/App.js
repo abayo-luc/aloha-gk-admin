@@ -4,7 +4,7 @@ import simpleRestProvider from "ra-data-simple-rest";
 import Icons from "./components/icons";
 import ProductList from "./resources/products/ProductList";
 import ProductEdit from "./resources/products/ProductEdit";
-
+import ProductCreate from "./resources/products/ProductCreate";
 import CategoryList from "./resources/categories/CategoryList";
 import CategoryEdit from "./resources/categories/CategoryEdit";
 
@@ -17,6 +17,7 @@ export default () => {
         name="products"
         list={ProductList}
         edit={ProductEdit}
+        create={ProductCreate}
         icon={Icons.products}
       />
       <Resource
