@@ -21,7 +21,6 @@ const ProductFilter = (props) => (
 );
 
 export default (props) => {
-  console.log(props);
   return (
     <List
       filters={<ProductFilter />}

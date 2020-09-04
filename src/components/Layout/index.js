@@ -3,7 +3,7 @@ import * as React from "react";
 import { Layout, Sidebar } from "react-admin";
 import AppBar from "./AppBar";
 // import Menu from './Menu';
-import { darkTheme, lightTheme } from "./themes";
+import { lightTheme } from "./themes";
 // import { AppState } from '../types';
 
 const CustomSidebar = (props) => <Sidebar {...props} size={200} />;

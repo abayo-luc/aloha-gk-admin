@@ -8,11 +8,6 @@ import {
   TabbedForm,
   TextInput,
   required,
-  ReferenceManyField,
-  Datagrid,
-  ArrayInput,
-  SimpleFormIterator,
-  DateInput,
   ImageField,
   ImageInput,
 } from "react-admin";
@@ -33,7 +28,6 @@ const requiredValidate = [required()];
 
 export default (props) => {
   const classes = useStyles();
-  console.log(props);
   return (
     <Create {...props}>
       <TabbedForm>

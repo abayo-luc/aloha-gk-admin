@@ -1,4 +1,4 @@
-import React, { cloneElement, useMemo } from "react";
+import React, { cloneElement } from "react";
 import {
   useListContext,
   TopToolbar,
@@ -9,15 +9,11 @@ import {
 export default (props) => {
   const { className, exporter, filters, maxResults, ...rest } = props;
   const {
-    currentSort,
     resource,
     displayedFilters,
     filterValues,
-    hasCreate,
     basePath,
-    selectedIds,
     showFilter,
-    total,
   } = useListContext();
   return (
     <TopToolbar className={className} {...sanitizeListRestProps(rest)}>

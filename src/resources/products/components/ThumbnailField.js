@@ -6,7 +6,6 @@ const useStyles = makeStyles({
 });
 
 const ThumbnailField = ({ record }) => {
-  console.log(record);
   const classes = useStyles();
   return record?.images ? (
     <img src={record.images[0]?.url} className={classes.root} alt="" />
