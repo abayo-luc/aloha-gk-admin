@@ -8,6 +8,7 @@ import {
   NumberField,
   EditButton,
   TextField,
+  ArrayField,
 } from "react-admin";
 import ThumbnailField from "../products/components/ThumbnailField";
 
@@ -23,24 +24,19 @@ export default (props) => (
   <Edit title={<CategoryTitle />} {...props}>
     <SimpleForm>
       <TextInput source="name" />
-      <ReferenceManyField
-        reference="products"
-        target="categoryId"
-        label="Associated Products"
-        perPage={20}
-        fullWidth
-      >
+      <TextInput source="image" />
+      <ArrayField source="products" label="Associated Products" fullWidth>
         <Datagrid>
           <ThumbnailField />
           <TextField source="name" />
-          <TextField source="description" />
+          <TextField source="fullDescription" />
           <NumberField
             source="price"
             options={{ style: "currency", currency: "Rwf" }}
           />
           <EditButton path="products" />
         </Datagrid>
-      </ReferenceManyField>
+      </ArrayField>
     </SimpleForm>
   </Edit>
 );

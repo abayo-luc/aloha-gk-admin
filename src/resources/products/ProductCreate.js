@@ -8,13 +8,11 @@ import {
   TabbedForm,
   TextInput,
   required,
-  ReferenceManyField,
-  Datagrid,
-  ArrayInput,
-  SimpleFormIterator,
-  DateInput,
+  ReferenceArrayInput,
+  SelectArrayInput,
   ImageField,
   ImageInput,
+  RadioButtonGroupInput,
 } from "react-admin";
 import { InputAdornment } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,6 +25,22 @@ export const styles = {
   stock: { width: "7em" },
   widthFormGroup: { display: "inline-block" },
   heightFormGroup: { display: "inline-block", marginLeft: 32 },
+  tab: {
+    maxWidth: "50%",
+    display: "block",
+  },
+  row: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  halfWidth: {
+    width: "45%",
+  },
+  fullWidth: {
+    width: "100%",
+  },
 };
 const useStyles = makeStyles(styles);
 const requiredValidate = [required()];
@@ -37,7 +51,7 @@ export default (props) => {
   return (
     <Create {...props}>
       <TabbedForm>
-        <FormTab label="Images">
+        <FormTab label="Images" contentClassName={classes.tab}>
           <ImageInput
             source="files"
             label="Product Images"
@@ -48,40 +62,93 @@ export default (props) => {
             <ImageField source="src" title="title" />
           </ImageInput>
         </FormTab>
-        <FormTab label="Details">
-          <TextInput source="name" fullWidth validate={requiredValidate} />
-          <NumberInput
-            source="price"
-            className={classes.price}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start" fullWidth>
-                  Rwf
-                </InputAdornment>
-              ),
-            }}
-            validate={requiredValidate}
+        <FormTab label="Product Details" contentClassName={classes.tab}>
+          <TextInput
+            source="name"
             fullWidth
+            validate={requiredValidate}
+            variant="outlined"
           />
-          <ReferenceInput
-            source="categoryId"
+          <div className={classes.row}>
+            <NumberInput
+              source="price"
+              className={classes.halfWidth}
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">Rwf</InputAdornment>
+                ),
+              }}
+              validate={requiredValidate}
+              variant="outlined"
+            />
+            <NumberInput
+              source="listPrice"
+              className={classes.halfWidth}
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">Rwf</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+            />
+          </div>
+
+          <div className={classes.row}>
+            <NumberInput
+              source="inStock"
+              label="In Stock"
+              validate={requiredValidate}
+              fullWidth
+              className={classes.halfWidth}
+              variant="outlined"
+            />
+            <NumberInput
+              source="discountRate"
+              label="Discrount Rate"
+              variant="outlined"
+              fullWidth
+              className={classes.halfWidth}
+            />
+          </div>
+          <ReferenceArrayInput
+            source="category_ids"
+            label="Categories"
             reference="categories"
             validate={requiredValidate}
+            variant="outlined"
+            fullWidth
           >
-            <SelectInput source="name" />
-          </ReferenceInput>
-          <NumberInput
-            source="totalItems"
-            label="Available Items"
-            validate={requiredValidate}
+            <SelectArrayInput optionText="name" />
+          </ReferenceArrayInput>
+
+          <RadioButtonGroupInput
+            source="status"
+            label="status"
+            className={classes.fullWidth}
+            defaultValue="hidden"
+            choices={[
+              { id: "active", name: "active" },
+              { id: "hidden", name: "hidden" },
+              { id: "disabled", name: "disabled" },
+            ]}
           />
-          <NumberInput source="discountRate" label="Discrount Rate" />
         </FormTab>
-        <FormTab label="Description">
+        <FormTab label="Description" contentClassName={classes.tab}>
+          <TextInput
+            source="shortDescription"
+            label="Short Description"
+            variant="outlined"
+            fullWidth
+            multiline
+            rows={3}
+          />
           <RichTextInput
-            source="description"
-            label=""
-            validate={requiredValidate}
+            source="fullDescription"
+            label="Short Description"
+            variant="outlined"
+            rows={7}
           />
         </FormTab>
       </TabbedForm>
