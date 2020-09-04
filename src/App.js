@@ -35,6 +35,7 @@ export default () => {
         icon={Icons.categories}
       />
       <Resource name="users" list={UserList} icon={Icons.users} />
+      <Resource name="productcategories" />
     </Admin>
   );
 };

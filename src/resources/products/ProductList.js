@@ -10,6 +10,9 @@ import {
   DateInput,
   NumberField,
   RichTextField,
+  SingleFieldList,
+  ChipField,
+  ArrayField,
 } from "react-admin";
 import ListActions from "./components/ListActions";
 
@@ -31,14 +34,23 @@ export default (props) => {
     >
       <Datagrid>
         <TextField source="name" />
-        <RichTextField source="description" />
-        <NumberField
-          source="price"
-          options={{ style: "currency", currency: "Rwf" }}
-        />
+        <NumberField source="price" label="Price(Rwf)" />
+        <NumberField source="listPrice" label="List Price(Rwf)" />
+        <NumberField source="inStock" label="Stock" />
+        <TextField source="status" />
+        <RichTextField source="shortDescription" label="Descrption" />
+
+        <ArrayField label="Categories" source="categories">
+          <SingleFieldList>
+            <ChipField
+              source="name"
+              varient="outlined"
+              size="small"
+              clickable={false}
+            />
+          </SingleFieldList>
+        </ArrayField>
         <DateField source="createdAt" label="Date" />
-        <TextField source="category.name" label="Category" />
-        {/* <TextField source="views" /> */}
         <EditButton basePath="/products" />
       </Datagrid>
     </List>
