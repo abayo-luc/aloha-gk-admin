@@ -8,11 +8,8 @@ import {
   TabbedForm,
   TextInput,
   required,
-  ReferenceManyField,
-  Datagrid,
-  ArrayInput,
-  SimpleFormIterator,
-  DateInput,
+  ReferenceArrayInput,
+  SelectArrayInput,
   ImageField,
   ImageInput,
   RadioButtonGroupInput,
@@ -115,15 +112,17 @@ export default (props) => {
               className={classes.halfWidth}
             />
           </div>
-          <ReferenceInput
-            source="categoryId"
+          <ReferenceArrayInput
+            source="category_ids"
+            label="Categories"
             reference="categories"
             validate={requiredValidate}
             variant="outlined"
             fullWidth
           >
-            <SelectInput source="name" />
-          </ReferenceInput>
+            <SelectArrayInput optionText="name" />
+          </ReferenceArrayInput>
+
           <RadioButtonGroupInput
             source="status"
             label="status"

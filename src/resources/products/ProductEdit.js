@@ -11,13 +11,19 @@ import {
   ImageInput,
   ImageField,
   RadioButtonGroupInput,
+  ReferenceArrayInput,
+  SelectArrayInput,
+  ArrayField,
+  SingleFieldList,
+  ChipField,
+  SelectInput,
 } from "react-admin";
 import { InputAdornment } from "@material-ui/core";
 import RichTextInput from "ra-input-rich-text";
 import { makeStyles } from "@material-ui/core/styles";
 import ImagePreview from "./components/ImagePreview";
 import DeleteButton from "../../components/Buttons/DeleteButton";
-
+import Category from "./components/Category";
 const ProductTitle = ({ record }) => {
   return <span> {record ? `${record.name}` : ""}</span>;
 };
@@ -51,6 +57,7 @@ const useStyles = makeStyles({
 
 export default (props) => {
   const classes = useStyles();
+  console.log(props);
   return (
     <Edit title={<ProductTitle />} {...props}>
       <TabbedForm>
@@ -68,13 +75,6 @@ export default (props) => {
           <ArrayInput source="images" label="Product Images">
             <SimpleFormIterator disableAdd removeButton={<DeleteButton />}>
               <ImagePreview />
-              <TextInput
-                source="url"
-                label="Image Url"
-                fullWidth
-                disabled
-                variant="outlined"
-              />
             </SimpleFormIterator>
           </ArrayInput>
         </FormTab>
@@ -129,15 +129,25 @@ export default (props) => {
               className={classes.halfWidth}
             />
           </div>
-          {/* <ReferenceArrayInput
-            source="categories"
+          <ArrayField label="Existing Categories" source="categories">
+            <SingleFieldList>
+              <ChipField
+                source="name"
+                varient="outlined"
+                size="small"
+                clickable={false}
+              />
+            </SingleFieldList>
+          </ArrayField>
+          <ReferenceArrayInput
+            source="category_ids"
+            label="New Categories"
             reference="categories"
-            validate={requiredValidate}
             variant="outlined"
             fullWidth
           >
             <SelectArrayInput optionText="name" />
-          </ReferenceArrayInput> */}
+          </ReferenceArrayInput>
 
           <RadioButtonGroupInput
             source="status"
