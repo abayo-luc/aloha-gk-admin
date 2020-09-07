@@ -2,11 +2,10 @@ import * as React from "react";
 import {
   DateInput,
   Edit,
-  NullableBooleanInput,
+  // NullableBooleanInput,
   TextInput,
   PasswordInput,
   Toolbar,
-  useTranslate,
   FormWithRedirect,
   required,
   email,
@@ -30,8 +29,6 @@ const VisitorTitle = ({ record }) => <p>hello</p>;
 //   record ? <FullNameField record={record} size="32" /> : null;
 
 const VisitorForm = (props) => {
-  const translate = useTranslate();
-
   return (
     <FormWithRedirect
       {...props}
