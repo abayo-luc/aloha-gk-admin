@@ -1,27 +1,26 @@
 import * as React from "react";
-import { FC } from "react";
 import {
-  NumberField,
-  TextField,
+  // NumberField,
+  // TextField,
   DateField,
-  useTranslate,
-  useGetList,
-  linkToRecord,
+  // useTranslate,
+  // useGetList,
+  //linkToRecord,
 } from "react-admin";
 import PropTypes from "prop-types";
 import {
-  Tooltip,
+  //Tooltip,
   Typography,
   Card,
   CardContent,
-  CardHeader,
-  Avatar,
-  IconButton,
+  // CardHeader,
+  // Avatar,
+  // IconButton,
   Box,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import ContentCreate from "@material-ui/icons/Create";
+// import ContentCreate from "@material-ui/icons/Create";
 // import order from "../orders";
 // import review from "../reviews";
 import { makeStyles } from "@material-ui/core/styles";
@@ -54,19 +53,19 @@ Aside.propTypes = {
 };
 
 const EventList = ({ record, basePath }) => {
-  const translate = useTranslate();
-  const { data: orders, ids: orderIds } = useGetList(
-    "commands",
-    { page: 1, perPage: 100 },
-    { field: "date", order: "DESC" },
-    { customer_id: record && record.id }
-  );
-  const { data: reviews, ids: reviewIds } = useGetList(
-    "reviews",
-    { page: 1, perPage: 100 },
-    { field: "date", order: "DESC" },
-    { customer_id: record && record.id }
-  );
+  // const translate = useTranslate();
+  // const { data: orders, ids: orderIds } = useGetList(
+  //   "commands",
+  //   { page: 1, perPage: 100 },
+  //   { field: "date", order: "DESC" },
+  //   { customer_id: record && record.id }
+  // );
+  // const { data: reviews, ids: reviewIds } = useGetList(
+  //   "reviews",
+  //   { page: 1, perPage: 100 },
+  //   { field: "date", order: "DESC" },
+  //   { customer_id: record && record.id }
+  // );
   //   const events = mixOrdersAndReviews(orders, orderIds, reviews, reviewIds);
 
   return (
