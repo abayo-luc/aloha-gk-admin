@@ -27,7 +27,7 @@ export default (props) => (
     perPage={25}
     {...props}
   >
-    <Datagrid>
+    <Datagrid rowClick="edit">
       <TextField source="names" />
       <TextField source="email" />
       <TextField source="phone" />

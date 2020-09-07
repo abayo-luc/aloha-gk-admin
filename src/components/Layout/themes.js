@@ -1,3 +1,4 @@
+import shadows from "./shadows";
 export const darkTheme = {
   palette: {
     primary: {
@@ -23,6 +24,7 @@ export const lightTheme = {
       default: "#fcfcfe",
     },
   },
+  shadows,
   shape: {
     borderRadius: 5,
   },
@@ -53,8 +55,8 @@ export const lightTheme = {
     },
     MuiAppBar: {
       colorSecondary: {
-        color: "#808080",
-        backgroundColor: "#fff",
+        color: "#fff",
+        backgroundColor: "#2BAE66FF",
       },
     },
     MuiLinearProgress: {

@@ -1,5 +1,5 @@
-import ProductList from "./ProductEdit";
-import ProductEdit from "./ProductEdit";
-import ProductCreate from "./ProductCreate";
+import list from "./ProductList";
+import edit from "./ProductEdit";
+import create from "./ProductCreate";
 
-export default { list: ProductEdit, edit: ProductList, created: ProductCreate };
+export { list, edit, create };

@@ -1,8 +1,23 @@
-import FolderOpenIcon from "@material-ui/icons/FolderOpen";
-import CategoryIcon from "@material-ui/icons/Category";
-import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import {
+  AlertCircle as alert,
+  BarChart as dashboard,
+  Lock as lock,
+  Settings as settings,
+  ShoppingBag as products,
+  User as user,
+  UserPlus as addUser,
+  Users as users,
+  Pocket as categories,
+} from "react-feather";
+
 export default {
-  products: FolderOpenIcon,
-  categories: CategoryIcon,
-  users: PeopleAltIcon,
+  dashboard,
+  products,
+  categories,
+  user,
+  settings,
+  addUser,
+  users,
+  lock,
+  alert,
 };

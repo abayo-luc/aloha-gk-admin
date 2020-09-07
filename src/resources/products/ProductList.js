@@ -32,7 +32,7 @@ export default (props) => {
       perPage={25}
       {...props}
     >
-      <Datagrid>
+      <Datagrid rowClick="edit">
         <TextField source="name" />
         <NumberField source="price" label="Price(Rwf)" />
         <NumberField source="listPrice" label="List Price(Rwf)" />
@@ -51,7 +51,6 @@ export default (props) => {
           </SingleFieldList>
         </ArrayField>
         <DateField source="createdAt" label="Date" />
-        <EditButton basePath="/products" />
       </Datagrid>
     </List>
   );
