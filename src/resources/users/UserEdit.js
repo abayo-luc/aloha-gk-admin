@@ -4,7 +4,7 @@ import {
   Edit,
   // NullableBooleanInput,
   TextInput,
-  PasswordInput,
+  // PasswordInput,
   Toolbar,
   FormWithRedirect,
   required,
@@ -127,7 +127,7 @@ const VisitorForm = (props) => {
 
                   <Box mt="1em" />
 
-                  <Typography variant="h6" gutterBottom>
+                  {/* <Typography variant="h6" gutterBottom>
                     Change Password
                   </Typography>
                   <Box display={{ xs: "block", sm: "flex" }}>
@@ -147,7 +147,7 @@ const VisitorForm = (props) => {
                         variant="outlined"
                       />
                     </Box>
-                  </Box>
+                  </Box> */}
                 </Box>
               </Box>
             </CardContent>

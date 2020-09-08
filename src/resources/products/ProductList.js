@@ -41,7 +41,7 @@ export default (props) => {
         <RichTextField source="shortDescription" label="Descrption" />
 
         <ArrayField label="Categories" source="categories">
-          <SingleFieldList>
+          <SingleFieldList linkType={false}>
             <ChipField
               source="name"
               varient="outlined"

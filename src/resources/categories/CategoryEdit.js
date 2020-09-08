@@ -5,7 +5,7 @@ import {
   TextInput,
   Datagrid,
   NumberField,
-  EditButton,
+  // EditButton,
   TextField,
   ArrayField,
 } from "react-admin";
@@ -25,7 +25,7 @@ export default (props) => (
       <TextInput source="name" />
       <TextInput source="image" />
       <ArrayField source="products" label="Associated Products" fullWidth>
-        <Datagrid>
+        <Datagrid rowClick="edit">
           <ThumbnailField />
           <TextField source="name" />
           <TextField source="fullDescription" />
@@ -33,7 +33,6 @@ export default (props) => (
             source="price"
             options={{ style: "currency", currency: "Rwf" }}
           />
-          <EditButton path="products" />
         </Datagrid>
       </ArrayField>
     </SimpleForm>

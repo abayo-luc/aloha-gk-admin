@@ -23,7 +23,7 @@ export default () => {
       <Resource name="products" icon={Icons.products} {...products} />
       <Resource name="categories" icon={Icons.categories} {...categories} />
       <Resource name="users" icon={Icons.users} {...users} />
-      <Resource name="productcategories" />
+      <Resource name="images" />
     </Admin>
   );
 };
