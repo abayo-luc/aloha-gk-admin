@@ -22,8 +22,9 @@ const CategoryTitle = ({ record }) => {
 export default (props) => (
   <Edit title={<CategoryTitle />} {...props}>
     <SimpleForm>
-      <TextInput source="name" />
-      <TextInput source="image" />
+      <TextInput source="name" variant="outlined" />
+      <TextInput source="image" variant="outlined" />
+      <TextInput source="description" multiline rows={3} variant="outlined" />
       <ArrayField source="products" label="Associated Products" fullWidth>
         <Datagrid rowClick="edit">
           <ThumbnailField />

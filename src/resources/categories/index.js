@@ -1,3 +1,4 @@
 import list from "./CategoryList";
 import edit from "./CategoryEdit";
-export { list, edit };
+import create from "./CategoryCreate";
+export { list, edit, create };
