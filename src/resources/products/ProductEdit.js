@@ -6,8 +6,8 @@ import {
   TabbedForm,
   NumberInput,
   required,
-  ArrayInput,
-  SimpleFormIterator,
+  // ArrayInput,
+  // SimpleFormIterator,
   ImageInput,
   ImageField,
   RadioButtonGroupInput,
@@ -16,12 +16,15 @@ import {
   ArrayField,
   SingleFieldList,
   ChipField,
+  // Datagrid,
+  // UrlField,
+  // useRefresh,
+  // useNotify,
 } from "react-admin";
 import { InputAdornment } from "@material-ui/core";
 import RichTextInput from "ra-input-rich-text";
 import { makeStyles } from "@material-ui/core/styles";
 import ImagePreview from "./components/ImagePreview";
-import DeleteButton from "../../components/Buttons/DeleteButton";
 const ProductTitle = ({ record }) => {
   return <span> {record ? `${record.name}` : ""}</span>;
 };
@@ -51,10 +54,16 @@ const useStyles = makeStyles({
   fullWidth: {
     width: "100%",
   },
+  images: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+  },
 });
 
 export default (props) => {
   const classes = useStyles();
+
   return (
     <Edit title={<ProductTitle />} {...props}>
       <TabbedForm>
@@ -69,11 +78,11 @@ export default (props) => {
             <ImageField source="src" title="title" />
           </ImageInput>
 
-          <ArrayInput source="images" label="Product Images">
-            <SimpleFormIterator disableAdd removeButton={<DeleteButton />}>
+          <ArrayField source="images" label={null} className={classes.images}>
+            <SingleFieldList linkType={false}>
               <ImagePreview />
-            </SimpleFormIterator>
-          </ArrayInput>
+            </SingleFieldList>
+          </ArrayField>
         </FormTab>
 
         <FormTab label="Product Details" contentClassName={classes.tab}>

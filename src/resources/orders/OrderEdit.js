@@ -1,10 +1,10 @@
 import * as React from "react";
 import {
-  AutocompleteInput,
+  // AutocompleteInput,
   BooleanInput,
   DateInput,
   Edit,
-  ReferenceInput,
+  // ReferenceInput,
   SelectInput,
   SimpleForm,
   useTranslate,
@@ -39,9 +39,9 @@ const OrderEdit = (props) => {
     >
       <SimpleForm>
         <DateInput source="shippedOn" label="shipedOn" />
-        <ReferenceInput source="customerId" reference="users">
+        {/* <ReferenceInput source="customerId" reference="users">
           <AutocompleteInput optionText={(choice) => choice.name} />
-        </ReferenceInput>
+        </ReferenceInput> */}
         <SelectInput
           source="status"
           choices={[

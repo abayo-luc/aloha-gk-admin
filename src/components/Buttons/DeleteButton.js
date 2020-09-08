@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     position: "absolute",
-    right: 5,
-    top: 10,
+    // right: 5,
+    // top: 10,
   },
 }));
 export default (props) => {
