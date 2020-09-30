@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 
 const Basket = ({ record }) => {
   const classes = useStyles();
-
+  const getId = (item) => item.product?.id;
   return (
     <Paper className={classes.container} elevation={2}>
       <Table>
@@ -36,8 +36,8 @@ const Basket = ({ record }) => {
           {record?.items.map((item) => (
             <TableRow key={item.id}>
               <TableCell>
-                <Link to={`/products/${item.product.id}`}>
-                  {item.product.name}
+                <Link to={`/products/${getId(item)}`}>
+                  {item.product?.name}
                 </Link>
               </TableCell>
               <TableCell className={classes.rightAlignedCell}>
@@ -62,7 +62,7 @@ const Basket = ({ record }) => {
             <TableCell colSpan={2} />
             <TableCell>Sum</TableCell>
             <TableCell className={classes.rightAlignedCell}>
-              {record?.totalAmount.toLocaleString(undefined, {
+              {record?.subTotal?.toLocaleString(undefined, {
                 style: "currency",
                 currency: "Rwf",
               })}
@@ -72,13 +72,13 @@ const Basket = ({ record }) => {
             <TableCell colSpan={2} />
             <TableCell>Delivery fees</TableCell>
             <TableCell className={classes.rightAlignedCell}>
-              {"1000".toLocaleString(undefined, {
+              {record?.deliveryFee?.toLocaleString(undefined, {
                 style: "currency",
                 currency: "Rwf",
               })}
             </TableCell>
           </TableRow>
-          <TableRow>
+          {/* <TableRow>
             <TableCell colSpan={2} />
             <TableCell>Tax rate</TableCell>
             <TableCell className={classes.rightAlignedCell}>
@@ -86,7 +86,7 @@ const Basket = ({ record }) => {
                 style: "percent",
               })}
             </TableCell>
-          </TableRow>
+          </TableRow> */}
           <TableRow>
             <TableCell colSpan={2} />
             <TableCell className={classes.boldCell}>Total</TableCell>

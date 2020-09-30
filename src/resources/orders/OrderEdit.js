@@ -1,47 +1,45 @@
 import * as React from "react";
 import {
-  // AutocompleteInput,
   BooleanInput,
   DateInput,
   Edit,
-  // ReferenceInput,
   SelectInput,
   SimpleForm,
-  useTranslate,
+  NumberInput,
+  TextInput,
+  Toolbar,
+  SaveButton,
 } from "react-admin";
 import { makeStyles } from "@material-ui/core/styles";
 import OrderItems from "./components/OrderItems";
-// import Basket from "./Basket";
-
-const OrderTitle = ({ record }) => {
-  const translate = useTranslate();
-  return record ? (
-    <span>
-      {translate("resources.commands.title", {
-        reference: record.reference,
-      })}
-    </span>
-  ) : null;
-};
 
 const useEditStyles = makeStyles({
   root: { alignItems: "flex-start" },
 });
 
+const CustomToolbar = (props) => (
+  <Toolbar {...props}>
+    <SaveButton />
+  </Toolbar>
+);
 const OrderEdit = (props) => {
+  console.log(props);
   const classes = useEditStyles();
   return (
-    <Edit
-      title={<OrderTitle />}
-      aside={<OrderItems />}
-      classes={classes}
-      {...props}
-    >
-      <SimpleForm>
-        <DateInput source="shippedOn" label="shipedOn" />
-        {/* <ReferenceInput source="customerId" reference="users">
-          <AutocompleteInput optionText={(choice) => choice.name} />
-        </ReferenceInput> */}
+    <Edit aside={<OrderItems />} classes={classes} {...props}>
+      <SimpleForm toolbar={<CustomToolbar />}>
+        <TextInput source="authCode" variant="outlined" disabled />
+        <DateInput
+          source="shippedOn"
+          variant="outlined"
+          label="Shipping Date"
+        />
+        <NumberInput
+          source="deliveryFee"
+          step={1}
+          min={1000}
+          variant="outlined"
+        />
         <SelectInput
           source="status"
           choices={[
@@ -49,8 +47,10 @@ const OrderEdit = (props) => {
             { id: "ordered", name: "ordered" },
             { id: "cancelled", name: "cancelled" },
           ]}
+          variant="outlined"
         />
         <BooleanInput source="returned" />
+        <BooleanInput source="piad" />
       </SimpleForm>
     </Edit>
   );

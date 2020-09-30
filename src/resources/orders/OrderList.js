@@ -112,47 +112,81 @@ const TabbedDatagrid = ({
           {filterValues.status === "ordered" && (
             <Datagrid {...rest} ids={ordered} optimized rowClick="edit">
               <NumberField source="orderId" label="ID" />
-              <DateField source="createdAt" showTime />
-              <TextField source="customer.names" label="Customer" />
-              <TextField source="customer.phone" label="Phone" />
+              <TextField
+                source="customer.names"
+                label="Customer"
+                sortable={false}
+              />
+              <TextField
+                source="customer.phone"
+                label="Phone"
+                sortable={false}
+              />
               <NumberField
-                source="totalAmount"
+                source="subTotal"
+                label="Sub Total"
                 options={{
                   style: "currency",
-                  currency: "USD",
+                  currency: "Rwf",
                 }}
                 className={classes.total}
               />
+              <NumberField
+                source="deliveryFee"
+                label="Delivery Fee"
+                options={{
+                  style: "currency",
+                  currency: "Rwf",
+                }}
+                className={classes.total}
+              />
+              <NumberField
+                source="totalAmount"
+                label="Total"
+                options={{
+                  style: "currency",
+                  currency: "Rwf",
+                }}
+                className={classes.total}
+              />
+              <BooleanField source="paid" />
+              <DateField source="createdAt" label="Date" showTime />
             </Datagrid>
           )}
           {filterValues.status === "delivered" && (
             <Datagrid {...rest} ids={delivered} rowClick="edit">
               <NumberField source="orderId" label="ID" />
-              <DateField source="createdAt" showTime />
-              <TextField source="customer.names" label="Customer" />
-              <TextField source="customer.phone" label="Phone" />
+              <TextField
+                source="customer.names"
+                label="Customer"
+                sortable={false}
+              />
               <NumberField
                 source="totalAmount"
                 options={{
                   style: "currency",
-                  currency: "USD",
+                  currency: "Rwf",
                 }}
                 className={classes.total}
               />
               <BooleanField source="returned" />
+              <DateField source="createdAt" showTime />
             </Datagrid>
           )}
           {filterValues.status === "cancelled" && (
             <Datagrid {...rest} ids={cancelled} rowClick="edit">
               <NumberField source="orderId" label="ID" />
               <DateField source="createdAt" showTime />
-              <TextField source="customer.names" label="Customer" />
-              <TextField source="customer.phone" label="Phone" />
+              <TextField
+                source="customer.phone"
+                label="Phone"
+                sortable={false}
+              />
               <NumberField
                 source="totalAmount"
                 options={{
                   style: "currency",
-                  currency: "USD",
+                  currency: "Rwf",
                 }}
                 className={classes.total}
               />
