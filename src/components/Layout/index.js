@@ -3,13 +3,12 @@ import * as React from "react";
 import { Layout, Sidebar } from "react-admin";
 import AppBar from "./AppBar";
 // import Menu from './Menu';
-import { lightTheme } from "./themes";
+import theme from "../../config/theme";
 // import { AppState } from '../types';
 
 const CustomSidebar = (props) => <Sidebar {...props} size={200} />;
 
 export default (props) => {
-  const theme = lightTheme;
   return (
     <Layout
       {...props}
