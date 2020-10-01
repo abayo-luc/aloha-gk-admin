@@ -1,9 +1,19 @@
 import simpleRestProvider from "ra-data-simple-rest";
+import { fetchUtils } from "react-admin";
 import convertFileTobase64 from "../helpers/convertFileTobase64";
 
 const { REACT_APP_API_BASE_URL } = process.env;
 
-const dataProvider = simpleRestProvider(REACT_APP_API_BASE_URL);
+const httpClient = (url, options = {}) => {
+  if (!options.headers) {
+    options.headers = new Headers({ Accept: "application/json" });
+  }
+  const token = localStorage.getItem("token");
+  options.headers.set("Authorization", `Bearer ${token}`);
+  return fetchUtils.fetchJson(url, options);
+};
+
+const dataProvider = simpleRestProvider(REACT_APP_API_BASE_URL, httpClient);
 
 const customDataProvider = {
   ...dataProvider,

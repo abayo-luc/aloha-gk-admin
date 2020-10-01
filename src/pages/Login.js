@@ -8,6 +8,8 @@ import {
   TextField,
   Typography,
   makeStyles,
+  CircularProgress,
+  colors,
 } from "@material-ui/core";
 import { Notification, useLogin } from "react-admin";
 import { useLocation } from "react-router-dom";
@@ -18,6 +20,20 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3),
+  },
+  error: {
+    color: colors.red[400],
+    textAlign: "center",
+  },
+  wrapper: {
+    position: "relative",
+  },
+  buttonProgress: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    marginTop: -12,
+    marginLeft: -12,
   },
 }));
 
@@ -111,19 +127,32 @@ const LoginView = () => {
                   value={values.password}
                   variant="outlined"
                 />
-                <ErrorMessage component="div" name="error" />
+
                 <Box my={2}>
-                  <Button
-                    color="primary"
-                    disabled={isSubmitting}
-                    fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                  >
-                    Sign in now
-                  </Button>
+                  <div className={classes.wrapper}>
+                    <Button
+                      color="primary"
+                      disabled={isSubmitting}
+                      fullWidth
+                      size="large"
+                      type="submit"
+                      variant="contained"
+                    >
+                      Sign in now
+                    </Button>
+                    {isSubmitting && (
+                      <CircularProgress
+                        size={24}
+                        className={classes.buttonProgress}
+                      />
+                    )}
+                  </div>
                 </Box>
+                <ErrorMessage
+                  component="div"
+                  name="error"
+                  className={classes.error}
+                />
               </form>
             )}
           </Formik>

@@ -14,7 +14,6 @@
     "chart.js": "^2.9.3",
     "clsx": "^1.1.1",
     "formik": "^2.1.6",
-    "history": "^5.0.0",
     "moment": "^2.27.0",
     "ra-data-simple-rest": "^3.8.3",
     "ra-input-rich-text": "^3.8.3",

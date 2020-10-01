@@ -1,6 +1,6 @@
 import React from "react";
 import { Admin, Resource } from "react-admin";
-import createHistory from "history/createBrowserHistory";
+import { createBrowserHistory as createHistory } from "history";
 /**
  * middlewares imports
  */
